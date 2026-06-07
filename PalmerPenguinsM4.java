@@ -1,6 +1,6 @@
 // PalmerPenguinsM4.java
-// 
-// 
+// Alejandro Cueto
+// 6/7/26
 // Reads the CSV file and parses the data
 
 import java.io.*;
@@ -16,9 +16,12 @@ public class PalmerPenguinsM4 {
     
     public static void main(String[] args) {
         // TODO 1 Declare the variables
-    
+    int currentRow = 0;
+    int specChinStrapCount = 0;
+    int specGentooCount = 0;
+    int specAdelieCount = 0;
         // Read the headers
-        String line = CSVReader.readFile(FILE_NAME, currRow++);
+        String line = CSVReader.readFile(FILE_NAME, currentRow++);
         if (line == null) {
             System.out.println("Error: The file is empty or could not be read.");
             return; // Exit the program if no headers are found
@@ -26,17 +29,23 @@ public class PalmerPenguinsM4 {
         System.out.println("found headers:\n" + line);
     
         // Process each subsequent row
-        while ((line = CSVReader.readFile(FILE_NAME, currRow++)) != null) {
+        while ((line = CSVReader.readFile(FILE_NAME, currentRow++)) != null) {
             // Check species in the line, increment appropriate accumulator
             if (line.contains(SP_CHINSTRAP)) {
                 specChinStrapCount++;
-            // TODO 2 complete the branches to increment the accumulators    
-            } else if            
-        }
+            // TODO 2 complete the branches to increment the accumulators
+    } else if (line.contains(SP_GENTOO)) {
+        specGentooCount++;
+    } else if (line.contains(SP_ADELIE)) {
+        specAdelieCount++;
+    }
+}
     
         // Print the results
         // TODO 3 print all accumulators
-
+System.out.println("Chinstrap count = " + specChinStrapCount);
+System.out.println("Gentoo count = " + specGentooCount);
+System.out.println("Adelie count = " + specAdelieCount);
     }
 }
 
